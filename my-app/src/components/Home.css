@@ -1,0 +1,30 @@
+.bodyContainer {
+    background-color: red;
+    height: 350px;
+    background-image: url("../images/resto1.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.navLinks {
+    color: white;
+ 
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.formBody {
+    width: 750px;
+    margin: auto;
+    margin-top: 70px;
+}
+#welcome{
+    color:lightsalmon ;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-shadow: 2px 2px #ff0000;
+    margin-top: 30px;
+}
