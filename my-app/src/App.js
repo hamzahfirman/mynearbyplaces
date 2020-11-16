@@ -11,21 +11,24 @@ import Home from './components/Home';
 import Places from './components/Places';
 import Place from './components/aPlace';
 import Businesses from './components/Businesses';
+import Login from './components/Login';
 
 function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path='/'>
-          <Home/>
+        <Route exact path='/' render={ props => <Home {...props}/>}>
         </Route>
-        <Route exact path='/places'>
+        <Route  path='/places'>
           <Places/>
         </Route>
-        <Route exact path='/aplace'>
+        <Route  path='/aplace'>
           <Place/>
         </Route>
-        <Route exact path='/businesses'>
+        <Route path='/login'>
+        <Login />
+        </Route>
+        <Route  path='/businesses'>
           <Businesses/>
         </Route>
       </Switch>

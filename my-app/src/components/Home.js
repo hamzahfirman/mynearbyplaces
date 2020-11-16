@@ -25,7 +25,7 @@ class Home extends React.Component {
                         <Nav.Link className="navLinks" href="/businesses">Add a Business</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link  className="navLinks" href="/">Login</Nav.Link>
+                        <Nav.Link  className="navLinks" href="/login">Login</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <div id="welcome">
@@ -47,6 +47,24 @@ class Home extends React.Component {
         );
     }
     render() {
+        // Captures the a given username from login
+        let username = '';
+        
+        const location = this.props.location;
+        if(location) {
+            if(location.state){
+                if(location.state.user){
+                    username = location.state.user;
+                }
+            }
+        }
+        if(username.length > 0){
+            return(
+                <div>
+                    It works
+                </div>
+            );
+        }
         return(
             <div>
                 {this.body()}
