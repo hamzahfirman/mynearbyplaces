@@ -34,6 +34,9 @@
 #logout{
     float: left;
 }
+#loginNow {
+    background-color: salmon;
+}
 #placeInput {
     width: 300px;
     margin-right: 10px;

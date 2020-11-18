@@ -28,8 +28,7 @@ function App() {
         <Route path='/login'>
         <Login />
         </Route>
-        <Route  path='/businesses'>
-          <Businesses/>
+        <Route  path='/businesses' render={ props => <Businesses {...props}/>}>
         </Route>
       </Switch>
     </BrowserRouter>

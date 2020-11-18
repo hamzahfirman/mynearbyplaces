@@ -2,7 +2,7 @@ import React from 'react';
 /* REACT BOOSTRAP */
 import { Nav, Form, Col, Table, Card, Button } from 'react-bootstrap';
 /* REACT ROUTER */
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 /* CSS */
 import './Home.css';
 /* Images */
@@ -14,15 +14,46 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            filled: false 
+            selected: false,
+            busineessType: "",
+            place:"",
+            location:""
         }
     }
 
-    handleOnClick = (event) => {
-       this.setState({
-           filled: true
-       });
-        
+    handleSearchSubmitted = () => {
+        let { place } = this.state;
+        let insensitivePlace = place.toLocaleLowerCase();
+        if(insensitivePlace === "restaurants" || insensitivePlace === "plumbers"
+         || insensitivePlace === "auto repairs" ){
+            this.props.history.push({
+                pathname: "/businesses",
+                business: insensitivePlace,
+                location: insensitivePlace});
+
+        }else{ //  User only chosen a Place 
+            this.props.history.push({
+                            pathname: "/businesses",
+                            business: this.state.place,
+                            location: this.state.location});
+
+        }
+    }
+    handleInputChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        // Changes the username
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleOnClick = (business) => {
+        this.props.history.push({
+            pathname: "/businesses",
+            business: business,
+            town:"Tucson",
+            state: "AZ" });
     }
     // METHOD:
     selectBusinesses = () => {
@@ -31,7 +62,6 @@ class Home extends React.Component {
                 The Best Businesses in Town
             </div>
         );
-
     }
     // METHOD: 
     tableBusinesses = () => {
@@ -44,7 +74,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Restaurant} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses">Restaurants</Button>
+                                                <Button id="buttonBusinesses" onClick={() => this.handleOnClick("restaurants")}>Restaurants</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -54,7 +84,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Plumber} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses">Plumbers</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("plumbers")}>Plumbers</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -64,7 +94,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Auto}/>
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses">Auto Repairs</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("auto repairs")}>Auto Repairs</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -80,20 +110,24 @@ class Home extends React.Component {
         return(
             <div>
                 <div className="formBody">
-                        <form className="loginNow" onSubmit={this.handleOnClick}>
+                        <form className="loginNow" onSubmit={this.handleSearchSubmitted} >
                             <input 
-                            id="placeInput"
+                                value={this.state.place}
+                                onChange = {this.handleInputChange}
+                                id="placeInput"
                                 type="text" 
                                 name="place"
                                 placeholder="restaurants, plumbers, auto repairs..."
                             />
                             <input
+                                value={this.state.location}
+                                onChange = {this.handleInputChange}
                                 id="addressInput"
                                 type="text"
                                 name="location" 
                                 placeholder="address, city, state or zip"
                             />
-                        <button type="submit" id="loginNow">Find</button>
+                         <button type="submit" id="loginNow">Find</button>
                     </form>
                 </div>  
         </div>
@@ -166,7 +200,7 @@ class Home extends React.Component {
         let username = '';
         
         const location = this.props.location;
-        let { filled } = this.state;
+        let { selected } = this.state;
         if(location) {
             if(location.state){
                 if(location.state.user){
@@ -174,7 +208,7 @@ class Home extends React.Component {
                 }
             }
         }
-        if(filled) {
+        if(selected == true) {
             <div>
                 Works!
             </div>
