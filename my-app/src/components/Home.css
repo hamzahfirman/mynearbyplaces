@@ -28,6 +28,30 @@
     text-shadow: 2px 2px #ff0000;
     margin-top: 30px;
 }
+.formBody{
+    text-align: center;
+}
 #logout{
     float: left;
+}
+#placeInput {
+    width: 300px;
+    margin-right: 10px;
+}
+#addressInput {
+    width: 300px;
+    margin-right: 10px;
+}
+.selectBusinesses {
+    color: goldenrod;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.tableBusinesses {
+    margin: auto;
+}
+td {
+    padding: 20px;
+    transition: transform .2s; /* Animation */
 }

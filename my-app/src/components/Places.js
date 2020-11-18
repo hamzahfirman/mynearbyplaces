@@ -1,4 +1,6 @@
 import React from 'react';
+/* Data */
+import Data from "./data";
 
 
 class Places extends React.Component {
