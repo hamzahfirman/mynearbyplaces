@@ -43,7 +43,9 @@ class Home extends React.Component {
                                 <Card  style={{ width: '10rem' }}>
                                     <Card.Img variant="top" src={Restaurant} />
                                         <Card.Body>
-                                            <Button variant="primary">Restaurants</Button>
+                                            <div className="buttonContainer">
+                                                <Button id="buttonBusinesses">Restaurants</Button>
+                                            </div>
                                     </Card.Body>
                                 </Card>
                             </td>
@@ -51,7 +53,9 @@ class Home extends React.Component {
                                 <Card style={{ width: '10rem' }}>
                                     <Card.Img variant="top" src={Plumber} />
                                         <Card.Body>
-                                            <Button variant="primary">Plumbers</Button>
+                                            <div className="buttonContainer">
+                                                <Button id="buttonBusinesses">Plumbers</Button>
+                                            </div>
                                     </Card.Body>
                                 </Card>
                             </td>
@@ -59,7 +63,9 @@ class Home extends React.Component {
                                 <Card style={{ width: '10rem' }}>
                                     <Card.Img variant="top" src={Auto}/>
                                         <Card.Body>
-                                            <Button variant="primary">Auto Repairs</Button>
+                                            <div className="buttonContainer">
+                                                <Button id="buttonBusinesses">Auto Repairs</Button>
+                                            </div>
                                     </Card.Body>
                                 </Card>
                             </td>
