@@ -52,8 +52,8 @@ class Home extends React.Component {
         this.props.history.push({
             pathname: "/businesses",
             business: business,
-            town:"Tucson",
-            state: "AZ" });
+            location: "Tucson, AZ"
+            });
     }
     // METHOD:
     selectBusinesses = () => {
@@ -74,7 +74,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Restaurant} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses" onClick={() => this.handleOnClick("restaurants")}>Restaurants</Button>
+                                                <Button id="buttonBusinesses" onClick={() => this.handleOnClick("Restaurants")}>Restaurants</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -84,7 +84,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Plumber} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("plumbers")}>Plumbers</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Plumbers")}>Plumbers</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -94,7 +94,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Auto}/>
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("auto repairs")}>Auto Repairs</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Auto Repairs")}>Auto Repairs</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>

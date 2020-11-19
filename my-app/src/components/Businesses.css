@@ -1,0 +1,51 @@
+#headerJumbotron {
+  
+    margin-top: 20px;
+}
+
+#headerContainer {
+    height: 50px;
+    background-color: rgb(211, 205, 198);
+    text-align: center;
+}
+
+#header {
+    font-size: 32px;
+}
+#searchForm {
+    width: 500px;
+    margin-top: 20px;
+
+}
+#brandName {
+    float: left;
+    color: burlywood;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+#buttonForm {
+    background-color:burlywood;
+    color:black;
+}
+#imageBusiness {
+    width:250px;
+    height:150px;
+    margin-right: 20px;
+}
+.cardBusiness {
+  width: 200px;
+}
+.cardBusiness:hover{
+    background-color:blanchedalmond;
+}
+#cardBusinessTitle {
+    font-size: 15px;
+}
+#cardBusinessText {
+
+    font-size: 10px;
+}
