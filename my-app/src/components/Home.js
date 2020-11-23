@@ -48,23 +48,23 @@ class Home extends React.Component {
         });
     }
 
-    handleOnClick = (business) => {
+    handleOnClick = (business, address) => {
         this.props.history.push({
             pathname: "/businesses",
             business: business,
-            address: "Tucson, AZ"
+            address: address
             });
     }
     // METHOD:
-    selectBusinesses = () => {
+    selectBusinesses = (aLocation) => {
         return(
             <div>
-                The Best Businesses in Town
+                The Best Businesses in {aLocation}
             </div>
         );
     }
     // METHOD: 
-    tableBusinesses = () => {
+    tableBusinesses = (address) => {
         return(
             <div>
                 <table className="tableBusinesses">
@@ -74,7 +74,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Restaurant} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses" onClick={() => this.handleOnClick("Restaurants")}>Restaurants</Button>
+                                                <Button id="buttonBusinesses" onClick={() => this.handleOnClick("Restaurants",address)}>Restaurants</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -84,7 +84,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Plumber} />
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Plumbers")}>Plumbers</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Plumbers",address)}>Plumbers</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -94,7 +94,7 @@ class Home extends React.Component {
                                     <Card.Img variant="top" src={Auto}/>
                                         <Card.Body>
                                             <div className="buttonContainer">
-                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Auto Repairs")}>Auto Repairs</Button>
+                                                <Button id="buttonBusinesses"  onClick={() => this.handleOnClick("Auto Repairs",address)}>Auto Repairs</Button>
                                             </div>
                                     </Card.Body>
                                 </Card>
@@ -154,16 +154,14 @@ class Home extends React.Component {
                         WELCOME TO FINDAPLACE
                     </div>
                     {this.searchBars()}
-            
                 </div>
-                <div className="selectBusinesses"> {this.selectBusinesses()}</div>
-                <div> {this.tableBusinesses()}</div>
+                <div className="selectBusinesses">Login is required to see the best businesses in your town below.</div>
             </div>
         );
     }
     // METHOD: Displays the given username on top right of the screen and offers 
     // a logout button.
-    signedIn = (name) => {
+    signedIn = (name, location) => {
         return (
             <div>
                 <div className="bodyContainer">
@@ -190,21 +188,24 @@ class Home extends React.Component {
                     </div>
                     {this.searchBars()}
                 </div>
-                <div className="selectBusinesses">{this.selectBusinesses()}</div>
-                <div> {this.tableBusinesses()}</div>
+                <div className="selectBusinesses">{this.selectBusinesses(location)}</div>
+                <div> {this.tableBusinesses(location)}</div>
             </div>
         );
     }
     render() {
         // Captures the a given username from login
         let username = '';
-        
+        let aLocation
+
         const location = this.props.location;
         let { selected } = this.state;
         if(location) {
             if(location.state){
-                if(location.state.user){
+                if(location.state.user && location.state.location){
                     username = location.state.user;
+                    aLocation = location.state.location;
+                  
                 }
             }
         }
@@ -216,7 +217,7 @@ class Home extends React.Component {
         if(username.length > 0){
             return(
                 <div>
-                    {this.signedIn(username)}
+                    {this.signedIn(username, aLocation)}
                 </div>
             );
         }

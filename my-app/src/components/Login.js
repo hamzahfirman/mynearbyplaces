@@ -14,7 +14,8 @@ class Login extends React.Component {
         // State is an object
         this.state = {
             username: '',
-            authenticated: false
+            authenticated: false,
+            location: ""
         };
     }
     // Submit 
@@ -43,7 +44,8 @@ class Login extends React.Component {
         inside form is independent from the 'state' 
         in the constructor of this component
          */}
-        let from = { pathname: '/', state: { user: this.state.username } }
+        let from = { pathname: '/', state: { user: this.state.username, 
+            location: this.state.location} }
         if (this.state.authenticated) {
             {/* Redirect to the Homepage */}
             return (
@@ -62,7 +64,17 @@ class Login extends React.Component {
                             onChange={this.hadleChange}
                             name="username" 
                             placeholder="username"/>
-                            <Button as="input" type="submit" id="loginButton" value="Login" />
+                            <br/>
+                            <br/>
+                        <input
+                            type="text"
+                            value={this.state.location}
+                            onChange={this.hadleChange}
+                            name="location"
+                            placeholder="ex: Tucson, AZ" />
+                            <br/>                  
+                            <br/>            
+                        <Button as="input" type="submit" id="loginButton" value="Login" />
                     </form>
                 </div>
                 <img src={Resto} id="restoImg" height="350px" width="500px" alt="resto2"/>
