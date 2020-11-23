@@ -1,44 +1,27 @@
 import React from 'react';
 /* REACT BOOSTRAP  */
 import { Jumbotron, Container, Card, Row, Image, Form, Button, Col } from 'react-bootstrap';
-/* IMAGES */
+/* Images */
 import Resto from '../images/resto3.jpg';
 /* CSS */
 import './Businesses.css';
+/* Data */
+import server from '../serverInterface/server';
+
 class Businesses extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            entries: []
+        };
     }
-    render() {
-        console.log(this.props)
-        return(
+
+    getBusinesses = (item) => {
+        return (
             <div>
-                
-                <div id="brandName">
-                    FINDAPLACE
-                </div>
-                <Form.Row id="searchForm">
-                        <Col>
-                        <Form.Control width="10px" placeholder="ramen, tacos, fish n' chips..." />
-                        </Col>
-                        <Col>
-                        <Button id="buttonForm" type="submit">
-                            Find
-                        </Button>
-                        </Col>
-                </Form.Row>
-                <div>
-                    <Jumbotron id="headerJumbotron" fluid>
-                        <Container id="headerContainer">
-                            <h1 id="header">The Best {this.props.location.business} in {this.props.location.location}</h1>
-                        </Container>
-                    </Jumbotron>
-                </div>
-                <Container>
-                    <Row>
-                    
+                    <Col>
                         <Card className="cardBusiness" style={{ width: '12rem' }}>
-                                <Card.Header>Brooklyn Pizza</Card.Header>
+                                <Card.Header>{item.name}</Card.Header>
                             <Card.Body>
                             <Image id="imageBusiness" src={Resto} fluid />
                                 <Card.Title id="cardBusinessTitle">Reviews Total: 9</Card.Title>
@@ -48,13 +31,73 @@ class Businesses extends React.Component {
                                     </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Row>
-                </Container>
+                    </Col>
+
             </div>
         );
-
     }
 
+
+    componentDidMount() {
+
+        // Queries Values
+        const location = this.props.location;
+        var businessType = location.business;
+        var aLocation = location.address.split(',');
+        var aTown = aLocation[0];
+        var aState = aLocation[1];
+
+        //Fetches the data through the server
+        const data = server.fetchEntries(businessType);
+        this.setState({entries: data.businesses});
+    }
+
+    render() {
+        const { entries } = this.state;
+        if(entries.length > 0){
+            return(
+                <div>
+                    
+                    <div id="brandName">
+                        FINDAPLACE
+                    </div>
+                    <Form.Row id="searchForm">
+                            <Col>
+                            <Form.Control width="10px" placeholder="ramen, tacos, fish n' chips..." />
+                            </Col>
+                            <Col>
+                            <Button id="buttonForm" type="submit">
+                                Find
+                            </Button>
+                            </Col>
+                    </Form.Row>
+                    <div>
+                        <Jumbotron id="headerJumbotron" fluid>
+                            <Container id="headerContainer">
+                                <h1 id="header">The Best {this.props.location.business} in {this.props.location.address}</h1>
+                            </Container>
+                        </Jumbotron>
+                    </div>
+                    <Container>
+                        <Row>
+                            {entries.map(this.getBusinesses)}
+                         </Row>
+                    </Container>
+          
+                </div>
+            );
+        
+    }else{
+        return(
+            <div>
+                Data is loading...
+            </div>
+            );
+          
+    }
+    
+    }
+    
 }
 
 export default Businesses;

@@ -17,7 +17,7 @@ class Home extends React.Component {
             selected: false,
             busineessType: "",
             place:"",
-            location:""
+            address:""
         }
     }
 
@@ -29,13 +29,13 @@ class Home extends React.Component {
             this.props.history.push({
                 pathname: "/businesses",
                 business: insensitivePlace,
-                location: insensitivePlace});
+                address: insensitivePlace});
 
         }else{ //  User only chosen a Place 
             this.props.history.push({
                             pathname: "/businesses",
                             business: this.state.place,
-                            location: this.state.location});
+                            address: this.state.address});
 
         }
     }
@@ -52,7 +52,7 @@ class Home extends React.Component {
         this.props.history.push({
             pathname: "/businesses",
             business: business,
-            location: "Tucson, AZ"
+            address: "Tucson, AZ"
             });
     }
     // METHOD:
