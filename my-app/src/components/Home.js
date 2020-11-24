@@ -121,7 +121,7 @@ class Home extends React.Component {
                                 id="placeInput"
                                 type="text" 
                                 name="place"
-                                placeholder="restaurants, plumbers, auto repairs..."
+                                placeholder="restaurants, plumbers, or auto repairs"
                             />
                             <input
                                 value={this.state.location}
@@ -129,7 +129,7 @@ class Home extends React.Component {
                                 id="addressInput"
                                 type="text"
                                 name="address" 
-                                placeholder="address, city, state or zip"
+                                placeholder="Tucson, AZ"
                             />
                          <button type="submit" id="loginNow">Find</button>
                     </form>
