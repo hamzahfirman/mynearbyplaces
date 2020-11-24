@@ -53,3 +53,19 @@
     background-color: blanchedalmond;
     color: black;
 }
+#businessCards {
+    padding-left:200px;
+    text-align: center;
+}
+#aReview{
+    text-align: center;
+
+}
+#allReviews{
+    text-align: center;
+    border: solid black;
+    width: 500px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: blanchedalmond;
+}

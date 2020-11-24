@@ -9,6 +9,18 @@ class Place extends React.Component {
         super(props);
 
     }
+    getAllReviews = (item) => {
+        return (
+            <div>
+                <div id="aReview">
+                     "{item.review}" - {item.username}
+                </div>
+            </div>
+        );
+
+
+    }
+
     render() {
         const { name, address, phone, cost, categories, totalReviews } = this.props.location.details;
         console.log(this.props.location);
@@ -31,20 +43,7 @@ class Place extends React.Component {
                 </Form>
                 <div id="allReviews">
                     <h5>Recent Reviews:</h5>
-                    <Carousel>
-                        <Carousel.Item interval={1000}>
-                            <Carousel.Caption>
-                                 <h3>{categories}</h3>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                        <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-                  
+                    {this.props.location.details.reviews.map(this.getAllReviews)}
                 </div>
             </div>
         );

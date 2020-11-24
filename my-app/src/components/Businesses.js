@@ -102,7 +102,7 @@ class Businesses extends React.Component {
                     </div>
                     <Form.Row id="searchForm">
                             <Col>
-                            <Form.Control width="10px" placeholder="ramen, tacos, fish n' chips..." />
+                            <Form.Control width="10px" placeholder="Under Construction ... " />
                             </Col>
                             <Col>
                             <Button id="buttonForm" type="submit">
@@ -117,12 +117,13 @@ class Businesses extends React.Component {
                             </Container>
                         </Jumbotron>
                     </div>
-                    <Container>
-                        <Row>
-                            {entries.map(this.getBusinesses)}
-                         </Row>
-                    </Container>
-          
+                    <div id="businessCards">
+                        <Container >
+                            <Row>
+                                {entries.map(this.getBusinesses)}
+                            </Row>
+                        </Container>
+                    </div>
                 </div>
             );
         

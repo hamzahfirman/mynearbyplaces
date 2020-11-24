@@ -16,7 +16,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website: "pizza-luna.com",
-                link: "https://pizza-luna.com/"
+                link: "https://pizza-luna.com/", 
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             }, 
             {
                 name: "Culinary Dropout",
@@ -29,7 +39,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website: "culinarydropout.com",
-                link: "https://culinarydropout.com"
+                link: "https://culinarydropout.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             }, 
             {
                 name: "Noodleholics",
@@ -42,8 +62,18 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website:"noodleholics.com",
-                link: "https://noodleholics.com"
-            }, 
+                link: "https://noodleholics.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
+            }
         ]
 
     },
@@ -62,7 +92,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website:"calsplumbing.com",
-                link:"https://calsplumbing.com"
+                link:"https://calsplumbing.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             }, 
              {
                 name: "Silverado Rooter & Plumbing",
@@ -75,7 +115,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website: "silveradoplumbing.com",
-                link: "https://calsplumbing.com"
+                link: "https://calsplumbing.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             },
             {
                 name: "Quality Plumbing Pros",
@@ -88,7 +138,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website: "tucsonplumbingpros.com",
-                link: "https://tucsonplumbingpros.com"
+                link: "https://tucsonplumbingpros.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             },
         ]
 
@@ -108,7 +168,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website:"1jtauto.com",
-                link: "https://1jtauto.com"
+                link: "https://1jtauto.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             },
             {
                 name: "Sooter's Auto Service",
@@ -121,7 +191,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website:"sootersauto.com",
-                link:"https://sootersauto.com"
+                link:"https://sootersauto.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             },
             {
                 name: "GIBBS Automative Service",
@@ -134,7 +214,17 @@ var data = [
                 totalReviews:"0",
                 price:"standard",
                 website:"gibbsautomotivetucson.com",
-                link:"https://gibbsautomotivetucson.com"
+                link:"https://gibbsautomotivetucson.com",
+                reviews: [{
+                    username: "hamzahfirman",
+                    review:"The BEST pizza place in town!"
+                },{
+                    username: "andyle",
+                    review:"Standard taste ... "
+                },{
+                    username: "antony123",
+                    review:"Trying the cheese one is a MUST~"
+                } ]
             },
         ]
 
