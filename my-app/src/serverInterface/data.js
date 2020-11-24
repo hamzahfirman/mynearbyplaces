@@ -201,7 +201,7 @@ var data = [
                 },{
                     username: "antony123",
                     review:"Trying the cheese one is a MUST~"
-                } ]
+                }]
             },
             {
                 name: "GIBBS Automative Service",

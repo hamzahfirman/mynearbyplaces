@@ -7,7 +7,19 @@ import { Jumbotron, Form, Container, Card, Row, Image, Button, Col, Carousel } f
 class Place extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username:"",
+            review:""
+        }
 
+    }
+    handleOnSubmit = (details) => {
+        let { username, review } = this.state;
+        this.props.location.details.reviews.push(
+            {username: username , review: review});
+        this.props.history.push({
+                pathname: "/aPlace",
+                details: details});
     }
     getAllReviews = (item) => {
         return (
@@ -20,6 +32,15 @@ class Place extends React.Component {
 
 
     }
+    handleInputChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        // Changes the username
+        this.setState({
+            [name]: value
+        });
+    }
+
 
     render() {
         const { name, address, phone, cost, categories, totalReviews } = this.props.location.details;
@@ -37,9 +58,21 @@ class Place extends React.Component {
                     </p>
                 </div>
                 <hr/>
-                <Form id="textArea">
-                    <Form.Control as="textarea" rows={3} />{<br></br>}
-                    <Button as="input" id="textSubmit" type="submit" value="Submit" />
+                <Form id="textArea" onSubmit={() => this.handleOnSubmit(this.props.location.details.reviews)}>
+                    <Form.Control  
+                    value = {this.state.username}
+                    onChange = {this.handleInputChange}
+                    name="username" 
+                    placeholder="username"/> {<br></br>}
+                    <Form.Control 
+                    as="textarea" 
+                    placeholder="Write your review here ... " 
+                    rows={3}
+                    value = {this.state.review}
+                    onChange = {this.handleInputChange}
+                    name="review" 
+                     />{<br></br>}
+                    <Button as="input" id="textSubmit"  type="submit" value="Submit" />
                 </Form>
                 <div id="allReviews">
                     <h5>Recent Reviews:</h5>
