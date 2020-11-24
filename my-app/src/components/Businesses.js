@@ -7,7 +7,11 @@ import Resto from '../images/resto3.jpg';
 import './Businesses.css';
 /* Data */
 import server from '../serverInterface/server';
+/* Checkpoint */
+import currentData from './Checkpoints';
 
+var LOCATION = "";
+var BUSINESS = "";
 class Businesses extends React.Component {
     constructor(props) {
         super(props);
@@ -15,41 +19,76 @@ class Businesses extends React.Component {
             entries: []
         };
     }
+    handleAReview = (businessDetails) => {
+        this.props.history.push({
+            pathname: "/aPlace",
+            details: businessDetails});
+    }
 
     getBusinesses = (item) => {
         return (
             <div>
-                    <Col>
-                        <Card className="cardBusiness" style={{ width: '12rem' }}>
-                                <Card.Header>{item.name}</Card.Header>
-                            <Card.Body>
-                            <Image id="imageBusiness" src={Resto} fluid />
-                                <Card.Title id="cardBusinessTitle">Reviews Total: 9</Card.Title>
-                                    <Card.Text id="cardBusinessText">
-                                        Some quick example text to build on the card title and make up the bulk
-                                        of the card's content.
-                                    </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                <Col>
+                    <Card className="cardBusiness" style={{ width: '12rem' }}>
+                            <Card.Header>{item.name}</Card.Header>
+                        <Card.Body>
+                        <Image id="imageBusiness" src={Resto} fluid />
+                            <Card.Title id="cardBusinessTitle">Total Reviews: {item.totalReviews}</Card.Title>
+                                <Card.Text id="cardBusinessText">
+                                    Address: {item.address}{<br/>}
+                                    Hours  : {item.hours}{<br/>}
+                                    Phone  : {item.phone}{<br/>}
+                                    Website: {<a href={item.link}>{item.website}</a>}{<br/>}
+                                    <Button variant="secondary" id="reviewButton" onClick={() => this.handleAReview(item)}size="sm" active>
+                                         Write a Review
+                                    </Button> 
+                                </Card.Text>
 
+                        </Card.Body>
+                    </Card>
+                </Col>
             </div>
         );
     }
 
 
     componentDidMount() {
+        
+        if(currentData["business"] == ""){
+            console.log(currentData);
+            // Queries Values
+            const location = this.props.location;
+            BUSINESS = location.business;
+            LOCATION = location.address;
+            currentData["business"] = BUSINESS;
+            currentData["location"] = LOCATION;
+          
+            
+            //Fetches the data through the server
+            const data = server.fetchEntries(BUSINESS);
+            this.setState({entries: data.businesses});
+        }else{
+            if((this.props.location.business != undefined &&
+                this.props.location.business != BUSINESS)
+                 && (this.props.location.address != LOCATION &&
+                    this.props.location.address != undefined) 
+                    ||(this.props.location.address == LOCATION &&
+                    this.props.location.address != undefined)){
+                        
+                    const location = this.props.location;
+                    BUSINESS = location.business;
+                    LOCATION = location.address;
+                    currentData["business"] = BUSINESS;
+                    currentData["location"] = LOCATION;
+                 }else{
+                    LOCATION = currentData["location"];
+                    BUSINESS = currentData["business"];
+                 }
+            //Fetches the data through the server
+            const data = server.fetchEntries(BUSINESS);
+            this.setState({entries: data.businesses});
+        }
 
-        // Queries Values
-        const location = this.props.location;
-        var businessType = location.business;
-        var aLocation = location.address.split(',');
-        var aTown = aLocation[0];
-        var aState = aLocation[1];
-
-        //Fetches the data through the server
-        const data = server.fetchEntries(businessType);
-        this.setState({entries: data.businesses});
     }
 
     render() {
@@ -74,7 +113,7 @@ class Businesses extends React.Component {
                     <div>
                         <Jumbotron id="headerJumbotron" fluid>
                             <Container id="headerContainer">
-                                <h1 id="header">The Best {this.props.location.business} in {this.props.location.address}</h1>
+                                <h1 id="header">The Best {BUSINESS} in {LOCATION}</h1>
                             </Container>
                         </Jumbotron>
                     </div>

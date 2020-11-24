@@ -22,8 +22,7 @@ function App() {
         <Route  path='/places'>
           <Places/>
         </Route>
-        <Route  path='/aplace'>
-          <Place/>
+        <Route  path='/aplace' render={ props => <Place {...props}/>}>
         </Route>
         <Route path='/login'>
         <Login />

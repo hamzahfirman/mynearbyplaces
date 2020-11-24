@@ -22,14 +22,18 @@ class Home extends React.Component {
     }
 
     handleSearchSubmitted = () => {
-        let { place } = this.state;
-        let insensitivePlace = place.toLocaleLowerCase();
+        let { place, address } = this.state;
+        let arrAddress = address.split(", ");
+        let town = arrAddress[0][0].toUpperCase() + arrAddress[0].substring(1).toLowerCase();
+        let state = arrAddress[1].toUpperCase();
+        let insensitivePlace = place.toLowerCase();
+
         if(insensitivePlace === "restaurants" || insensitivePlace === "plumbers"
          || insensitivePlace === "auto repairs" ){
             this.props.history.push({
                 pathname: "/businesses",
-                business: insensitivePlace,
-                address: insensitivePlace});
+                business: insensitivePlace[0].toUpperCase() + insensitivePlace.substring(1),
+                address: town + ", " + state});
 
         }else{ //  User only chosen a Place 
             this.props.history.push({
@@ -124,7 +128,7 @@ class Home extends React.Component {
                                 onChange = {this.handleInputChange}
                                 id="addressInput"
                                 type="text"
-                                name="location" 
+                                name="address" 
                                 placeholder="address, city, state or zip"
                             />
                          <button type="submit" id="loginNow">Find</button>
@@ -155,7 +159,7 @@ class Home extends React.Component {
                     </div>
                     {this.searchBars()}
                 </div>
-                <div className="selectBusinesses">Login is required to see the best businesses in your town below.</div>
+                <div className="selectBusinesses">Login is required to see the best businesses in Tucson, AZ below.</div>
             </div>
         );
     }
@@ -196,7 +200,7 @@ class Home extends React.Component {
     render() {
         // Captures the a given username from login
         let username = '';
-        let aLocation
+        let aLocation = '';
 
         const location = this.props.location;
         let { selected } = this.state;

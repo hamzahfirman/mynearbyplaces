@@ -36,16 +36,20 @@
     height:150px;
     margin-right: 20px;
 }
-.cardBusiness {
-  width: 200px;
-}
-.cardBusiness:hover{
-    background-color:blanchedalmond;
-}
+
 #cardBusinessTitle {
     font-size: 15px;
 }
 #cardBusinessText {
-
+    
     font-size: 10px;
+}
+#reviewButton {
+    margin-top: 10px;
+    text-align: center;
+    background-color: burlywood;
+}
+#reviewButton:hover{
+    background-color: blanchedalmond;
+    color: black;
 }

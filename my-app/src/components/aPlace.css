@@ -1,0 +1,24 @@
+#bussinessDescription{
+    text-align:center ;
+
+}#totalReviews {
+    background-color: blanchedalmond;
+}
+hr{
+    width: 500px;
+    color: black;
+    border: black solid 1px;
+}
+#textArea {
+
+    margin-left:50px;
+    margin-top: 50px;
+    margin-right: 150px;
+}
+#allReviews{
+    margin-top: 100px;
+}
+#textSubmit{
+    background-color:burlywood;
+    color:white;
+}
