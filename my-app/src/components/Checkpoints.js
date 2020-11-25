@@ -3,6 +3,8 @@ var currentData = {
     location:""
 
 };
+var currPlaceData ={
+    data:[]
+};
 
-
-export default currentData;
+export { currPlaceData, currentData };

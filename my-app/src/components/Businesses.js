@@ -8,7 +8,7 @@ import './Businesses.css';
 /* Data */
 import server from '../serverInterface/server';
 /* Checkpoint */
-import currentData from './Checkpoints';
+import { currentData }  from './Checkpoints';
 
 var LOCATION = "";
 var BUSINESS = "";
@@ -21,7 +21,7 @@ class Businesses extends React.Component {
     }
     handleAReview = (businessDetails) => {
         this.props.history.push({
-            pathname: "/aPlace",
+            pathname: "/place",
             details: businessDetails});
     }
 
