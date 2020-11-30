@@ -3,8 +3,12 @@ var currentData = {
     location:""
 
 };
-var currPlaceData ={
-    data:[]
+var storage = {};
+var currPlaceData = (entries) =>{
+     storage = entries;
 };
 
-export { currPlaceData, currentData };
+export { 
+    storage, 
+    currPlaceData,
+    currentData, };

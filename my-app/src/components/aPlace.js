@@ -4,7 +4,7 @@ import "./aPlace.css";
 /* REACT BOOSTRAP  */
 import { Jumbotron, Form, Container, Card, Row, Image, Button, Col, Carousel } from 'react-bootstrap';
 /* Data */
-import { currPlaceData } from  "./Checkpoints";
+import { storage, currPlaceData } from "./Checkpoints";
 
 var DATA="";
 var CHECKPOINT= false
@@ -14,18 +14,15 @@ class Place extends React.Component {
         this.state = {
             username:"",
             review:"",
-            data: {}
+            data: {},
+            render: true
         }
 
     }
-    handleOnSubmit = () => {
+    handleOnSubmit = (datas) => {
         let { username, review } = this.state;
-    
-        console.log(this.props.location.details);
-        this.props.location.details.reviews.push({username: username, review: review})
-        console.log(this.props.location.details);
-        
-        currPlaceData = this.props.location.details;
+        storage.reviews.push({username: username, review: review})
+        this.setState({render: false});
     }
     getAllReviews = (item) => {
         return (
@@ -51,16 +48,16 @@ class Place extends React.Component {
         // First time visit to this component
         if(this.props.location.details === undefined){
                     
-            DATA = currPlaceData["data"];
+            DATA = storage;
             const data = DATA;
             this.setState({data: data});
         }else{
-            console.log(currPlaceData["data"]);
+
             // Queries Values
             DATA = this.props.location.details
-  
+            currPlaceData(DATA);
             //Fetches the data through the server
-            console.log(DATA);
+
             const data = DATA;
             this.setState({data: data});
         
@@ -70,7 +67,7 @@ class Place extends React.Component {
 
     
         const { data } = this.state
-        
+        console.log(this.props.location.details);
         if(data.name != undefined){
             const { name, address, phone, 
                 cost, categories, totalReviews } = data;
@@ -87,7 +84,7 @@ class Place extends React.Component {
                         </p>
                     </div>
                     <hr/>
-                    <Form id="textArea" onSubmit={this.handleOnSubmit}>
+                    <Form id="textArea" onSubmit={() => this.handleOnSubmit(data)}>
                         <Form.Control  
                         value = {this.state.username}
                         onChange = {this.handleInputChange}
@@ -105,7 +102,7 @@ class Place extends React.Component {
                     </Form>
                     <div id="allReviews">
                         <h5>Recent Reviews:</h5>
-                        {this.props.location.details.reviews.map(this.getAllReviews)}
+                        {data.reviews.map(this.getAllReviews)}
                     </div>
                 </div>
             );

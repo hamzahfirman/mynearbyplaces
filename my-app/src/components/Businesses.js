@@ -55,7 +55,7 @@ class Businesses extends React.Component {
     componentDidMount() {
         
         if(currentData["business"] == ""){
-            console.log(currentData);
+
             // Queries Values
             const location = this.props.location;
             BUSINESS = location.business;
