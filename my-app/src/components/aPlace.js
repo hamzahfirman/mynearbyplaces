@@ -19,10 +19,13 @@ class Place extends React.Component {
         }
 
     }
-    handleOnSubmit = (datas) => {
+    handleOnSubmit = (event) => {
+     
         let { username, review } = this.state;
         storage.reviews.push({username: username, review: review})
-        this.setState({render: false});
+        this.setState({username:"",review:""})
+
+        event.preventDefault();
     }
     getAllReviews = (item) => {
         return (
@@ -84,7 +87,7 @@ class Place extends React.Component {
                         </p>
                     </div>
                     <hr/>
-                    <Form id="textArea" onSubmit={() => this.handleOnSubmit(data)}>
+                    <Form id="textArea" onSubmit={this.handleOnSubmit}>
                         <Form.Control  
                         value = {this.state.username}
                         onChange = {this.handleInputChange}

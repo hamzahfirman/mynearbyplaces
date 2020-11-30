@@ -1,6 +1,6 @@
 import React from 'react';
 /* REACT BOOSTRAP */
-import { Nav, Form, Col, Table, Card, Button } from 'react-bootstrap';
+import { Nav, Form, Col, Table, Row, Card, Button, InputGroup } from 'react-bootstrap';
 /* REACT ROUTER */
 import { Link, Redirect } from 'react-router-dom';
 /* CSS */
@@ -17,7 +17,8 @@ class Home extends React.Component {
             selected: false,
             busineessType: "",
             place:"",
-            address:""
+            address:"",
+            addBusiness: false
         }
     }
 
@@ -52,6 +53,18 @@ class Home extends React.Component {
         });
     }
 
+    handleOnClickAddBusiness = () => {
+        alert("Login is required");
+
+    }
+    handleOnClickWriteReview = () => {
+        alert("Login is required");
+
+    }
+
+    handleOnClickAddBusinessState = () => {
+        this.setState({addBusiness: true})
+    }
     handleOnClick = (business, address) => {
         this.props.history.push({
             pathname: "/businesses",
@@ -59,11 +72,73 @@ class Home extends React.Component {
             address: address
             });
     }
+
+      
     // METHOD:
     selectBusinesses = (aLocation) => {
         return(
             <div>
                 The Best Businesses in {aLocation}
+            </div>
+        );
+    }
+    addBusiness = () => {
+        return(
+
+            <div>
+                <div id="titleNewBusiness">
+                Add a Business
+                </div>
+                <hr></hr>
+                <div id="addBusinessForm">
+                    <Form>
+                    <Form.Group as={Row} controlId="formHorizontalEmail">
+                        <Form.Label column sm={2}>
+                        Place Name 
+                        </Form.Label>
+                        <Col sm={5}>
+                        <Form.Control type="email" placeholder="Place Name" />
+                        </Col>
+                    </Form.Group>
+                    
+                    <Form.Group as={Row} controlId="formHorizontalPassword">
+                        <Form.Label column sm={2}>
+                        Address
+                        </Form.Label>
+                        <Col sm={5}>
+                        <Form.Control type="password" placeholder="Address" />
+                        </Col>
+                    </Form.Group>
+                    <fieldset>
+                        <Form.Group as={Row}>
+                        <Form.Label as="legend" column sm={2}>
+                            Category
+                        </Form.Label>
+                        <Col sm={10}>
+                            <Form.Check
+                            type="radio"
+                            label="Restaurant"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios1"
+                            />
+                            <Form.Check
+                            type="radio"
+                            label="Plumbing"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios2"
+                            />
+                            <Form.Check
+                            type="radio"
+                            label="Auto Repairs"
+                            name="formHorizontalRadios"
+                            id="formHorizontalRadios3"
+                            />
+                        </Col>
+                        </Form.Group>
+                    </fieldset>
+                    <Button as="input" id="textSubmit" placeholder="Submit" type="submit" />
+                    </Form>
+                </div>
             </div>
         );
     }
@@ -145,10 +220,10 @@ class Home extends React.Component {
 
                     <Nav className="justify-content-end" activeKey="/home">
                         <Nav.Item>
-                            <Nav.Link className="navLinks" href="/places">Write a Review</Nav.Link>
+                            <Nav.Link className="navLinks" onClick={this.handleOnClickWriteReview}>Write a Review</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link className="navLinks" href="/businesses">Add a Business</Nav.Link>
+                            <Nav.Link className="navLinks" onClick={this.handleOnClickAddBusiness}>Add a Business</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link  className="navLinks" href="/login">Login</Nav.Link>
@@ -178,10 +253,10 @@ class Home extends React.Component {
                     </div>
                     <Nav className="justify-content-end" activeKey="/home">
                         <Nav.Item>
-                            <Nav.Link className="navLinks" href="/places">Write a Review</Nav.Link>
+                            <Nav.Link className="navLinks" href="">Write a Review</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link className="navLinks" href="/businesses">Add a Business</Nav.Link>
+                            <Nav.Link className="navLinks" onClick={this.handleOnClickAddBusinessState}>Add a Business</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link  className="navLinks" href="">{name}</Nav.Link>
@@ -203,7 +278,7 @@ class Home extends React.Component {
         let aLocation = '';
 
         const location = this.props.location;
-        let { selected } = this.state;
+        let { addBusiness } = this.state;
         if(location) {
             if(location.state){
                 if(location.state.user && location.state.location){
@@ -213,10 +288,16 @@ class Home extends React.Component {
                 }
             }
         }
-        if(selected == true) {
-            <div>
-                Works!
-            </div>
+
+        if(username.length > 0 && addBusiness === true ){
+            return(
+                <div>
+                    {this.signedIn(username, aLocation)}
+                    <div>
+                        {this.addBusiness()}
+                    </div>
+                </div>
+            );
         }
         if(username.length > 0){
             return(
