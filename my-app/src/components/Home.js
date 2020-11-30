@@ -18,7 +18,8 @@ class Home extends React.Component {
             busineessType: "",
             place:"",
             address:"",
-            addBusiness: false
+            addBusiness: false,
+            goToLogin: false
         }
     }
 
@@ -72,7 +73,11 @@ class Home extends React.Component {
             address: address
             });
     }
+    goToLogin = () => {
+        this.setState({goToLogin: true});
 
+
+    }
       
     // METHOD:
     selectBusinesses = (aLocation) => {
@@ -226,7 +231,7 @@ class Home extends React.Component {
                             <Nav.Link className="navLinks" onClick={this.handleOnClickAddBusiness}>Add a Business</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link  className="navLinks" href="/login">Login</Nav.Link>
+                            <Nav.Link  className="navLinks" onClick={this.goToLogin}>Login</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <div id="welcome">
@@ -288,7 +293,11 @@ class Home extends React.Component {
                 }
             }
         }
-
+        if(this.state.goToLogin == true){
+            return(
+            <Redirect to= {{pathname: '/login'}}/>
+            );
+        }
         if(username.length > 0 && addBusiness === true ){
             return(
                 <div>
