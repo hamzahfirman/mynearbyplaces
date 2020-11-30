@@ -74,9 +74,12 @@ class Home extends React.Component {
             });
     }
     goToLogin = () => {
-        this.setState({goToLogin: true});
+        this.props.history.push({pathname:"/login"});
 
 
+    }
+    goLogout = () => {
+        this.props.history.push({pathname: "/"});
     }
       
     // METHOD:
@@ -252,7 +255,7 @@ class Home extends React.Component {
                     <div id="logout">
                         <Nav className="justify-content-end" activeKey="/home">
                             <Nav.Item>
-                                <Nav.Link className="navLinks" href="/">Logout</Nav.Link>
+                                <Nav.Link className="navLinks" onClick={this.goLogout}>Logout</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </div>

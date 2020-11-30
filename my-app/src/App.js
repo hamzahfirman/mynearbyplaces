@@ -24,7 +24,7 @@ function App() {
         </Route>
         <Route  path='/place' render={ props => <Place {...props}/>}>
         </Route>
-        <Route path='/login' render={ props => <Login {...props}/>}>>
+        <Route path='/login' render={ props => <Login {...props}/>}>
         </Route>
         <Route  path='/businesses' render={ props => <Businesses {...props}/>}>
         </Route>
