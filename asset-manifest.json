@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/mynearbyplaces/static/css/main.5156398e.chunk.css",
-    "main.js": "/mynearbyplaces/static/js/main.84db1839.chunk.js",
-    "main.js.map": "/mynearbyplaces/static/js/main.84db1839.chunk.js.map",
-    "runtime-main.js": "/mynearbyplaces/static/js/runtime-main.f06588a2.js",
-    "runtime-main.js.map": "/mynearbyplaces/static/js/runtime-main.f06588a2.js.map",
-    "static/js/2.57c113c8.chunk.js": "/mynearbyplaces/static/js/2.57c113c8.chunk.js",
-    "static/js/2.57c113c8.chunk.js.map": "/mynearbyplaces/static/js/2.57c113c8.chunk.js.map",
-    "static/js/3.9423e2cf.chunk.js": "/mynearbyplaces/static/js/3.9423e2cf.chunk.js",
-    "static/js/3.9423e2cf.chunk.js.map": "/mynearbyplaces/static/js/3.9423e2cf.chunk.js.map",
+    "main.css": "/mynearbyplaces/static/css/main.6eb83486.chunk.css",
+    "main.js": "/mynearbyplaces/static/js/main.935563f0.chunk.js",
+    "main.js.map": "/mynearbyplaces/static/js/main.935563f0.chunk.js.map",
+    "runtime-main.js": "/mynearbyplaces/static/js/runtime-main.f918ff17.js",
+    "runtime-main.js.map": "/mynearbyplaces/static/js/runtime-main.f918ff17.js.map",
+    "static/js/2.bb0a2775.chunk.js": "/mynearbyplaces/static/js/2.bb0a2775.chunk.js",
+    "static/js/2.bb0a2775.chunk.js.map": "/mynearbyplaces/static/js/2.bb0a2775.chunk.js.map",
+    "static/js/3.e80e54e4.chunk.js": "/mynearbyplaces/static/js/3.e80e54e4.chunk.js",
+    "static/js/3.e80e54e4.chunk.js.map": "/mynearbyplaces/static/js/3.e80e54e4.chunk.js.map",
     "index.html": "/mynearbyplaces/index.html",
-    "static/css/main.5156398e.chunk.css.map": "/mynearbyplaces/static/css/main.5156398e.chunk.css.map",
-    "static/js/2.57c113c8.chunk.js.LICENSE.txt": "/mynearbyplaces/static/js/2.57c113c8.chunk.js.LICENSE.txt",
+    "static/css/main.6eb83486.chunk.css.map": "/mynearbyplaces/static/css/main.6eb83486.chunk.css.map",
+    "static/js/2.bb0a2775.chunk.js.LICENSE.txt": "/mynearbyplaces/static/js/2.bb0a2775.chunk.js.LICENSE.txt",
     "static/media/auto1.924f1c52.jpg": "/mynearbyplaces/static/media/auto1.924f1c52.jpg",
     "static/media/logo.103b5fa1.svg": "/mynearbyplaces/static/media/logo.103b5fa1.svg",
     "static/media/plumbing1.0af04adf.jpg": "/mynearbyplaces/static/media/plumbing1.0af04adf.jpg",
@@ -20,9 +20,9 @@
     "static/media/resto3.a4f8ff41.jpg": "/mynearbyplaces/static/media/resto3.a4f8ff41.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f06588a2.js",
-    "static/js/2.57c113c8.chunk.js",
-    "static/css/main.5156398e.chunk.css",
-    "static/js/main.84db1839.chunk.js"
+    "static/js/runtime-main.f918ff17.js",
+    "static/js/2.bb0a2775.chunk.js",
+    "static/css/main.6eb83486.chunk.css",
+    "static/js/main.935563f0.chunk.js"
   ]
 }
