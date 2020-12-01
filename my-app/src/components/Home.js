@@ -10,6 +10,9 @@ import Plumber from "../images/plumbing1.jpg";
 import Auto from "../images/auto1.jpg";
 import Restaurant from "../images/resto3.jpg";
 
+/* New Business Info */
+var newBusinessInfo = {};
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -19,10 +22,11 @@ class Home extends React.Component {
             place:"",
             address:"",
             addBusiness: false,
-            goToLogin: false
+            goToLogin: false,
+            newBusiness: {}
         }
     }
-
+    /* -------------- Event Handlers -------------  */
     handleSearchSubmitted = () => {
         let { place, address } = this.state;
         let arrAddress = address.split(", ");
@@ -46,11 +50,14 @@ class Home extends React.Component {
         }
     }
     handleInputChange = (event) => {
+
         const value = event.target.value;
         const name = event.target.name;
+
+        newBusinessInfo[name] = value;
         // Changes the username
         this.setState({
-            [name]: value
+            newBusiness: newBusinessInfo
         });
     }
 
@@ -62,7 +69,6 @@ class Home extends React.Component {
         alert("Login is required");
 
     }
-
     handleOnClickAddBusinessState = () => {
         this.setState({addBusiness: true})
     }
@@ -73,15 +79,30 @@ class Home extends React.Component {
             address: address
             });
     }
+    addBusinessSubmit = (event) => {
+        console.log(this.state.newBusiness)
+        event.preventDefault();
+    }
     goToLogin = () => {
         this.props.history.push({pathname:"/login"});
-
-
     }
     goLogout = () => {
         this.props.history.push({pathname: "/"});
     }
-      
+
+    handleSelectState = (event) => {
+        
+        const value = event.target.value;
+        const name = event.target.name;
+
+        newBusinessInfo[name] = value;
+        // Changes the username
+        this.setState({
+            newBusiness: newBusinessInfo
+        });
+        event.preventDefault();
+    }
+    /* ------------------------------------------ */
     // METHOD:
     selectBusinesses = (aLocation) => {
         return(
@@ -99,13 +120,17 @@ class Home extends React.Component {
                 </div>
                 <hr></hr>
                 <div id="addBusinessForm">
-                    <Form>
+                    <Form onSubmit={this.addBusinessSubmit}>
                     <Form.Group as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
                         Place Name 
                         </Form.Label>
                         <Col sm={5}>
-                        <Form.Control type="email" placeholder="Place Name" />
+                        <Form.Control
+                        
+                        onChange = {this.handleInputChange}
+                        name="name" 
+                        placeholder="Place Name" />
                         </Col>
                     </Form.Group>
                     
@@ -114,36 +139,71 @@ class Home extends React.Component {
                         Address
                         </Form.Label>
                         <Col sm={5}>
-                        <Form.Control type="password" placeholder="Address" />
+                        <Form.Control 
+
+                        onChange = {this.handleInputChange}
+                        name="address"
+                        placeholder="Address" 
+                        />
                         </Col>
                     </Form.Group>
-                    <fieldset>
-                        <Form.Group as={Row}>
-                        <Form.Label as="legend" column sm={2}>
-                            Category
-                        </Form.Label>
-                        <Col sm={10}>
-                            <Form.Check
-                            type="radio"
-                            label="Restaurant"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios1"
-                            />
-                            <Form.Check
-                            type="radio"
-                            label="Plumbing"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios2"
-                            />
-                            <Form.Check
-                            type="radio"
-                            label="Auto Repairs"
-                            name="formHorizontalRadios"
-                            id="formHorizontalRadios3"
-                            />
-                        </Col>
+                    <Form.Group as={Row}>
+                    <Form.Label as="legend" column sm={2}>
+                        Category
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "restaurant" 
+                        label="Restaurant"
+                        name="type"
+                        />
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "plumber" 
+                        label="Plumbing"
+                        name="type"
+                        />
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "auto pairs" 
+                        label="Auto Pairs"
+                        name="type"
+                        />
+                    </Col>
+                    </Form.Group>
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridCity">
+                        <Form.Label>City</Form.Label>
+                        <Form.Control 
+                        onChange = {this.handleInputChange}
+                        name="zip" />
                         </Form.Group>
-                    </fieldset>
+
+                        <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>State</Form.Label>
+                        <Form.Control 
+                        as="select" 
+                        defaultValue="State"
+                        name="state"
+                        onChange={this.handleInputChange}>
+                            <option>State</option>
+                            <option>AZ</option>
+                        </Form.Control>
+                        </Form.Group>
+
+                        <Form.Group as={Col} controlId="formGridZip">
+                        <Form.Label>Zip</Form.Label>
+                        <Form.Control  
+                        onChange = {this.handleInputChange}
+                        name="zip"
+                        placeholder="xxxxx" />
+                        </Form.Group>
+                     </Form.Row>
+
                     <Button as="input" id="textSubmit" placeholder="Submit" type="submit" />
                     </Form>
                 </div>
