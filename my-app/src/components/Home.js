@@ -84,7 +84,7 @@ class Home extends React.Component {
             });
     }
     addBusinessSubmit = (event) => {
-        let index = {"resturants":0, "plumbers":1, "auto pairs":2}
+        let index = {"restaurants":0, "plumbers":1, "auto pairs":2}
         data[index[this.state.newBusiness.type]].businesses.push(this.state.newBusiness);
         console.log(data)
         newBusinessInfo = {
