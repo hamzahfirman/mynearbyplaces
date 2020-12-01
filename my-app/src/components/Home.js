@@ -10,7 +10,7 @@ import Plumber from "../images/plumbing1.jpg";
 import Auto from "../images/auto1.jpg";
 import Restaurant from "../images/resto3.jpg";
 /* Data */
-import businessData from "../serverInterface/data";
+import data from "../serverInterface/data";
 /* New Business Info */
 var newBusinessInfo = {
     totalReviews: 0,
@@ -84,14 +84,19 @@ class Home extends React.Component {
             });
     }
     addBusinessSubmit = (event) => {
-        
-        let found = businessData.find(x => x.type === this.state.newBusiness.type.toLowerCase());
-        let businesses = found.businesses;
-        businesses.push(this.state.newBusiness)
+        let index = {"resturants": 0, "plumbers":1, "auto pairs":2}
+        data[index[this.state.newBusiness.type]].businesses.push(this.state.newBusiness);
+        console.log(data)
         newBusinessInfo = {
             totalReviews: 0,
             reviews:[]
         };
+        this.setState({
+            newBusiness: newBusinessInfo
+        });
+        this.setState({
+            addBusiness: false
+        });
         event.preventDefault();
     }
     goToLogin = () => {
@@ -101,18 +106,7 @@ class Home extends React.Component {
         this.props.history.push({pathname: "/"});
     }
 
-    handleSelectState = (event) => {
-        
-        const value = event.target.value;
-        const name = event.target.name;
-
-        newBusinessInfo[name] = value;
-        // Changes the username
-        this.setState({
-            newBusiness: newBusinessInfo
-        });
-        event.preventDefault();
-    }
+   
     /* ------------------------------------------ */
     // METHOD:
     selectBusinesses = (aLocation) => {

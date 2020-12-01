@@ -13,7 +13,7 @@ var data = [
                 categories:"Pizza",
                 cost:"$$",
                 hours:"12:00 PM - 8:00 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website: "pizza-luna.com",
                 link: "https://pizza-luna.com/", 
@@ -38,7 +38,7 @@ var data = [
                 categories:"American",
                 cost:"$$",
                 hours:"10:00 AM - 9:00 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website: "culinarydropout.com",
                 link: "https://culinarydropout.com",
@@ -63,7 +63,7 @@ var data = [
                 categories:"Noodles",
                 cost:"$$",
                 hours:"12:00 PM - 9:00 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website:"noodleholics.com",
                 link: "https://noodleholics.com",
@@ -95,7 +95,7 @@ var data = [
                 categories:"Plumbing",
                 cost:"$$",
                 hours:"24 hours",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website:"calsplumbing.com",
                 link:"https://calsplumbing.com",
@@ -120,7 +120,7 @@ var data = [
                 categories:"Plumbing",
                 cost:"$",
                 hours:"24 hours",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website: "silveradoplumbing.com",
                 link: "https://calsplumbing.com",
@@ -145,7 +145,7 @@ var data = [
                 categories:"Plumbing",
                 cost:"$$$",
                 hours:"24 hours",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website: "tucsonplumbingpros.com",
                 link: "https://tucsonplumbingpros.com",
@@ -177,7 +177,7 @@ var data = [
                 categories:"Auto Repair",
                 cost:"$$",
                 hours:"8:30 AM - 5:00 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website:"1jtauto.com",
                 link: "https://1jtauto.com",
@@ -202,7 +202,7 @@ var data = [
                 categories:"Auto Repair",
                 cost:"$$$",
                 hours:"7:30 AM - 5:30 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website:"sootersauto.com",
                 link:"https://sootersauto.com",
@@ -227,7 +227,7 @@ var data = [
                 categories:"Auto Repair",
                 cost:"$",
                 hours:"7:30 AM - 5:00 PM",
-                totalReviews:"3",
+                totalReviews:3,
                 price:"standard",
                 website:"gibbsautomotivetucson.com",
                 link:"https://gibbsautomotivetucson.com",
@@ -247,6 +247,8 @@ var data = [
     }
 
 ];
+
+
 
 export default data;
 
