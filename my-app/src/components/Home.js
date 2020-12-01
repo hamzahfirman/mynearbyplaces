@@ -84,7 +84,14 @@ class Home extends React.Component {
             });
     }
     addBusinessSubmit = (event) => {
-        console.log(this.state.newBusiness)
+        
+        let found = businessData.find(x => x.type === this.state.newBusiness.type.toLowerCase());
+        let businesses = found.businesses;
+        businesses.push(this.state.newBusiness)
+        newBusinessInfo = {
+            totalReviews: 0,
+            reviews:[]
+        };
         event.preventDefault();
     }
     goToLogin = () => {
@@ -251,14 +258,14 @@ class Home extends React.Component {
                         <Form.Check
                         type="radio"
                         onChange = {this.handleInputChange}
-                        value = "restaurant" 
+                        value = "restaurants" 
                         label="Restaurant"
                         name="type"
                         />
                         <Form.Check
                         type="radio"
                         onChange = {this.handleInputChange}
-                        value = "plumber" 
+                        value = "plumbers" 
                         label="Plumbing"
                         name="type"
                         />

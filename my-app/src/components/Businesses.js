@@ -86,6 +86,7 @@ class Businesses extends React.Component {
                  }
             //Fetches the data through the server
             const data = server.fetchEntries(BUSINESS);
+            console.log(data.businesses);
             this.setState({entries: data.businesses});
         }
 
@@ -93,6 +94,7 @@ class Businesses extends React.Component {
 
     render() {
         const { entries } = this.state;
+        console.log(entries);
         if(entries.length > 0){
             return(
                 <div>
