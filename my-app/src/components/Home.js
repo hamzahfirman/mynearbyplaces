@@ -11,7 +11,10 @@ import Auto from "../images/auto1.jpg";
 import Restaurant from "../images/resto3.jpg";
 
 /* New Business Info */
-var newBusinessInfo = {};
+var newBusinessInfo = {
+    totalReviews: 0,
+    reviews:[]
+};
 
 class Home extends React.Component {
     constructor(props) {
@@ -143,13 +146,93 @@ class Home extends React.Component {
 
                         onChange = {this.handleInputChange}
                         name="address"
-                        placeholder="Address" 
+                        placeholder="Street Name" 
                         />
                         </Col>
                     </Form.Group>
+                    <Form.Row>
+                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Label>City</Form.Label>
+                    <Form.Control 
+                    onChange = {this.handleInputChange}
+                    name="zip" />
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Label>State</Form.Label>
+                    <Form.Control 
+                    as="select" 
+                    defaultValue="State"
+                    name="state"
+                    onChange={this.handleInputChange}>
+                        <option>State</option>
+                        <option>AZ</option>
+                    </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Label>Zip</Form.Label>
+                    <Form.Control  
+                    onChange = {this.handleInputChange}
+                    name="zip"
+                    placeholder="xxxxx" />
+                    </Form.Group>
+                 </Form.Row>
+                 <Form.Group as={Row} controlId="formHorizontalEmail">
+                 <Form.Label column sm={2}>
+                 Phone
+                 </Form.Label>
+                 <Col sm={5}>
+                 <Form.Control
+                 
+                 onChange = {this.handleInputChange}
+                 name="phone" 
+                 placeholder="Ex: (xxx) xxx-xxxx" />
+                 </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="formHorizontalEmail">
+                <Form.Label column sm={2}>
+                Category
+                </Form.Label>
+                <Col sm={5}>
+                <Form.Control
+                
+                onChange = {this.handleInputChange}
+                name="categories" 
+                placeholder="Ex: Pizza, Plumbing, Noodles, etc,." />
+                </Col>
+                </Form.Group>
                     <Form.Group as={Row}>
                     <Form.Label as="legend" column sm={2}>
-                        Category
+                        Cost 
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "$" 
+                        label="$"
+                        name="cost"
+                        />
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "$$" 
+                        label="$$"
+                        name="cost"
+                        />
+                        <Form.Check
+                        type="radio"
+                        onChange = {this.handleInputChange}
+                        value = "$$$" 
+                        label="$$$"
+                        name="cost"
+                        />
+                    </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}>
+                    <Form.Label as="legend" column sm={2}>
+                        Business
                     </Form.Label>
                     <Col sm={10}>
                         <Form.Check
@@ -175,35 +258,30 @@ class Home extends React.Component {
                         />
                     </Col>
                     </Form.Group>
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridCity">
-                        <Form.Label>City</Form.Label>
-                        <Form.Control 
-                        onChange = {this.handleInputChange}
-                        name="zip" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>State</Form.Label>
-                        <Form.Control 
-                        as="select" 
-                        defaultValue="State"
-                        name="state"
-                        onChange={this.handleInputChange}>
-                            <option>State</option>
-                            <option>AZ</option>
-                        </Form.Control>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridZip">
-                        <Form.Label>Zip</Form.Label>
-                        <Form.Control  
-                        onChange = {this.handleInputChange}
-                        name="zip"
-                        placeholder="xxxxx" />
-                        </Form.Group>
-                     </Form.Row>
-
+                    <Form.Group as={Row} controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                    Website
+                    </Form.Label>
+                    <Col sm={5}>
+                    <Form.Control
+                    
+                    onChange = {this.handleInputChange}
+                    name="website" 
+                    placeholder="Ex: test123.com" />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="formHorizontalEmail">
+                <Form.Label column sm={2}>
+                Link
+                </Form.Label>
+                <Col sm={5}>
+                <Form.Control
+                
+                onChange = {this.handleInputChange}
+                name="link" 
+                placeholder="Ex: https://test123.com" />
+                </Col>
+            </Form.Group>
                     <Button as="input" id="textSubmit" placeholder="Submit" type="submit" />
                     </Form>
                 </div>
