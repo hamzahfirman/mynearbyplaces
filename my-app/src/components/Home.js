@@ -9,7 +9,8 @@ import './Home.css';
 import Plumber from "../images/plumbing1.jpg";
 import Auto from "../images/auto1.jpg";
 import Restaurant from "../images/resto3.jpg";
-
+/* Data */
+import businessData from "../serverInterface/data";
 /* New Business Info */
 var newBusinessInfo = {
     totalReviews: 0,
@@ -178,6 +179,18 @@ class Home extends React.Component {
                     placeholder="xxxxx" />
                     </Form.Group>
                  </Form.Row>
+                   <Form.Group as={Row} controlId="formHorizontalEmail">
+                 <Form.Label column sm={2}>
+                 Hours
+                 </Form.Label>
+                 <Col sm={5}>
+                 <Form.Control
+                 
+                 onChange = {this.handleInputChange}
+                 name="hours" 
+                 placeholder="Ex: xx:xx AM - xx:xx PM " />
+                 </Col>
+                </Form.Group>
                  <Form.Group as={Row} controlId="formHorizontalEmail">
                  <Form.Label column sm={2}>
                  Phone
@@ -412,9 +425,7 @@ class Home extends React.Component {
                         WELCOME TO FINDAPLACE
                     </div>
                     {this.searchBars()}
-                </div>
-                <div className="selectBusinesses">{this.selectBusinesses(location)}</div>
-                <div> {this.tableBusinesses(location)}</div>
+                </div>  
             </div>
         );
     }
@@ -442,18 +453,35 @@ class Home extends React.Component {
         if(username.length > 0 && addBusiness === true ){
             return(
                 <div>
+                    <div>
                     {this.signedIn(username, aLocation)}
+                    </div>
                     <div>
                         {this.addBusiness()}
                     </div>
+                    <hr></hr>
+                    <div className="selectBusinesses">
+                        {this.selectBusinesses(aLocation)}
+                    </div>
+                    <div>
+                        {this.tableBusinesses(aLocation)}
+                    </div>
+                   
                 </div>
             );
         }
         if(username.length > 0){
             return(
                 <div>
+                    <div>
                     {this.signedIn(username, aLocation)}
+                    </div>
+                    <div className="selectBusinesses">
+                        {this.selectBusinesses(aLocation)}
+                    </div>
+                        {this.tableBusinesses(aLocation)}
                 </div>
+                
             );
         }
         return(
