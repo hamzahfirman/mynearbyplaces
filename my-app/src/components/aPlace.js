@@ -5,6 +5,7 @@ import "./aPlace.css";
 import { Jumbotron, Form, Container, Card, Row, Image, Button, Col, Carousel } from 'react-bootstrap';
 /* Data */
 import { storage, currPlaceData } from "./Checkpoints";
+import data from "../serverInterface/data";
 
 var DATA="";
 var CHECKPOINT= false
@@ -23,6 +24,7 @@ class Place extends React.Component {
      
         let { username, review } = this.state;
         storage.reviews.push({username: username, review: review})
+        storage.totalReviews += 1;
         this.setState({username:"",review:""})
 
         event.preventDefault();

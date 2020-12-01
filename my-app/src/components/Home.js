@@ -84,7 +84,7 @@ class Home extends React.Component {
             });
     }
     addBusinessSubmit = (event) => {
-        let index = {"resturants": 0, "plumbers":1, "auto pairs":2}
+        let index = {"resturants":0, "plumbers":1, "auto pairs":2}
         data[index[this.state.newBusiness.type]].businesses.push(this.state.newBusiness);
         console.log(data)
         newBusinessInfo = {
@@ -446,6 +446,8 @@ class Home extends React.Component {
                 }
             }
         }
+        console.log(addBusiness);
+        console.log(username);
         if(this.state.goToLogin == true){
             return(
             <Redirect to= {{pathname: '/login'}}/>
