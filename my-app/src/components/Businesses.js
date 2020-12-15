@@ -54,41 +54,40 @@ class Businesses extends React.Component {
 
     componentDidMount() {
         
-        if(currentData["business"] == ""){
+        // if(currentData["business"] == ""){
 
-            // Queries Values
-            const location = this.props.location;
-            BUSINESS = location.business;
-            LOCATION = location.address;
-            currentData["business"] = BUSINESS;
-            currentData["location"] = LOCATION;
+        //     // Queries Values
+        //     const location = this.props.location;
+        //     BUSINESS = location.business;
+        //     LOCATION = location.address;
+        //     currentData["business"] = BUSINESS;
+        //     currentData["location"] = LOCATION;
           
             
-            //Fetches the data through the server
-            const data = server.fetchEntries(BUSINESS);
-            this.setState({entries: data.businesses});
-        }else{
-            if((this.props.location.business != undefined &&
-                this.props.location.business != BUSINESS)
-                 && (this.props.location.address != LOCATION &&
-                    this.props.location.address != undefined) 
-                    ||(this.props.location.address == LOCATION &&
-                    this.props.location.address != undefined)){
+        //     //Fetches the data through the server
+        const data = server.fetchPlaces().then(x => this.setState({entries: x})).catch(e => console.log(e));
+        // }else{
+        //     if((this.props.location.business != undefined &&
+        //         this.props.location.business != BUSINESS)
+        //          && (this.props.location.address != LOCATION &&
+        //             this.props.location.address != undefined) 
+        //             ||(this.props.location.address == LOCATION &&
+        //             this.props.location.address != undefined)){
                         
-                    const location = this.props.location;
-                    BUSINESS = location.business;
-                    LOCATION = location.address;
-                    currentData["business"] = BUSINESS;
-                    currentData["location"] = LOCATION;
-                 }else{
-                    LOCATION = currentData["location"];
-                    BUSINESS = currentData["business"];
-                 }
-            //Fetches the data through the server
-            const data = server.fetchEntries(BUSINESS);
-            console.log(data.businesses);
-            this.setState({entries: data.businesses});
-        }
+        //             const location = this.props.location;
+        //             BUSINESS = location.business;
+        //             LOCATION = location.address;
+        //             currentData["business"] = BUSINESS;
+        //             currentData["location"] = LOCATION;
+        //          }else{
+        //             LOCATION = currentData["location"];
+        //             BUSINESS = currentData["business"];
+        //          }
+        //     //Fetches the data through the server
+        //     const data = server.fetchPlaces(BUSINESS);
+        //     console.log(data.businesses);
+        //     this.setState({entries: data.businesses});
+        // }
 
     }
 
@@ -96,6 +95,7 @@ class Businesses extends React.Component {
         const { entries } = this.state;
         console.log(entries);
         if(entries.length > 0){
+            console.log(entries);
             return(
                 <div>
                     

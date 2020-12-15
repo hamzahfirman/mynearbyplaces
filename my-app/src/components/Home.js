@@ -1,6 +1,6 @@
 import React from 'react';
 /* REACT BOOSTRAP */
-import { Nav, Form, Col, Table, Row, Card, Button, InputGroup } from 'react-bootstrap';
+import { Nav, Form, Col, Table, Row, Card, Button, InputGroup, Image, Container } from 'react-bootstrap';
 /* REACT ROUTER */
 import { Link, Redirect } from 'react-router-dom';
 /* CSS */
@@ -9,8 +9,9 @@ import './Home.css';
 import Plumber from "../images/plumbing1.jpg";
 import Auto from "../images/auto1.jpg";
 import Restaurant from "../images/resto3.jpg";
+import Resto from '../images/resto3.jpg';
 /* Data */
-import data from "../serverInterface/data";
+import server from "../serverInterface/server";
 /* New Business Info */
 var newBusinessInfo = {
     totalReviews: 0,
@@ -27,7 +28,8 @@ class Home extends React.Component {
             address:"",
             addBusiness: false,
             goToLogin: false,
-            newBusiness: {}
+            newBusiness: {},
+            entries:[]
         }
     }
     /* -------------- Event Handlers -------------  */
@@ -83,13 +85,16 @@ class Home extends React.Component {
             address: address
             });
     }
+    handleAReview = (businessDetails) => {
+        this.props.history.push({
+            pathname: "/place",
+            details: businessDetails});
+    }
     addBusinessSubmit = (event) => {
-        let index = {"restaurants":0, "plumbers":1, "auto pairs":2}
-        data[index[this.state.newBusiness.type]].businesses.push(this.state.newBusiness);
-        console.log(data)
+        console.log(this.state.newBusiness);
+        server.pushAPlace(this.state.newBusiness);
         newBusinessInfo = {
             totalReviews: 0,
-            reviews:[]
         };
         this.setState({
             newBusiness: newBusinessInfo
@@ -106,7 +111,9 @@ class Home extends React.Component {
         this.props.history.push({pathname: "/"});
     }
 
-   
+    componentDidMount() {
+        const data = server.fetchPlaces().then(x => this.setState({entries: x})).catch(e => console.log(e));
+    }
     /* ------------------------------------------ */
     // METHOD:
     selectBusinesses = (aLocation) => {
@@ -343,6 +350,32 @@ class Home extends React.Component {
             </div>
         );
     }
+    getBusinesses = (item) => {
+        return (
+            <div>
+                <Col>
+                    <Card className="cardBusiness" style={{ width: '12rem' }}>
+                            <Card.Header>{item.name}</Card.Header>
+                        <Card.Body>
+                        <Image id="imageBusiness" src={Resto} fluid />
+                            <Card.Title id="cardBusinessTitle">Total Reviews: {item.totalReviews}</Card.Title>
+                                <Card.Text id="cardBusinessText">
+                                    Address: {item.address}{<br/>}
+                                    Hours  : {item.hours}{<br/>}
+                                    Phone  : {item.phone}{<br/>}
+                                    Website: {<a href={item.link}>{item.website}</a>}{<br/>}
+                                    <Button variant="secondary" id="reviewButton" onClick={() => this.handleAReview(item)}size="sm" active>
+                                         Write a Review
+                                    </Button> 
+                                </Card.Text>
+
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </div>
+        );
+    }
+
     // METHOD: 
     searchBars = () => {
 
@@ -436,7 +469,7 @@ class Home extends React.Component {
         let aLocation = '';
 
         const location = this.props.location;
-        let { addBusiness } = this.state;
+        let { addBusiness, entries } = this.state;
         if(location) {
             if(location.state){
                 if(location.state.user && location.state.location){
@@ -446,8 +479,7 @@ class Home extends React.Component {
                 }
             }
         }
-        console.log(addBusiness);
-        console.log(username);
+
         if(this.state.goToLogin == true){
             return(
             <Redirect to= {{pathname: '/login'}}/>
@@ -466,9 +498,14 @@ class Home extends React.Component {
                     <div className="selectBusinesses">
                         {this.selectBusinesses(aLocation)}
                     </div>
-                    <div>
-                        {this.tableBusinesses(aLocation)}
-                    </div>
+                    <br></br>
+                    <div id="businessCards">
+                    <Container >
+                        <Row>
+                            {entries.map(this.getBusinesses)}
+                        </Row>
+                    </Container>
+                </div>
                    
                 </div>
             );
@@ -482,7 +519,14 @@ class Home extends React.Component {
                     <div className="selectBusinesses">
                         {this.selectBusinesses(aLocation)}
                     </div>
-                        {this.tableBusinesses(aLocation)}
+                    <br></br>
+                    <div id="businessCards">
+                    <Container >
+                        <Row>
+                            {entries.map(this.getBusinesses)}
+                        </Row>
+                    </Container>
+                </div>
                 </div>
                 
             );

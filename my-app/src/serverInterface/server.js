@@ -1,17 +1,15 @@
-import data from './data';
-
+let api = "https://hamzahfirman-nearbyplaces-api.herokuapp.com";
 // A Function that will fecth all entries
-let getData= (businessType) => {
-    // Later On: We will connect to a backend and fetch all the entries from it. 
-
-    // alert(cat);
-    let found = data.find(x => x.type === businessType.toLowerCase());
-    return found;
-}
-
-// Object 
 let server = {
-    fetchEntries: getData
-};
+    fetchPlaces: () => {return(fetch(api + "/places").then(x => x.json()));},
+    fetchReviews: (typeid) => {return(fetch(api + `/reviews/${typeid}`).then(x => x.json()));},
+    // pushAReview: () => { return(fetch(api))}
+    // pushAReview: () => {return(fetch(api + "/search").then(x => x.json()));},
+    pushAPlace: (data) => {return (fetch(api + "/place", {
+                method: 'POST',
+                header: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+    }))}};
+
 
 export default server;

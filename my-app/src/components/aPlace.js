@@ -5,9 +5,9 @@ import "./aPlace.css";
 import { Jumbotron, Form, Container, Card, Row, Image, Button, Col, Carousel } from 'react-bootstrap';
 /* Data */
 import { storage, currPlaceData } from "./Checkpoints";
-import data from "../serverInterface/data";
+import server from "../serverInterface/server";
 
-var DATA="";
+var DATA;
 var CHECKPOINT= false
 class Place extends React.Component {
     constructor(props) {
@@ -50,23 +50,9 @@ class Place extends React.Component {
     }
 
     componentDidMount() {
-        // First time visit to this component
-        if(this.props.location.details === undefined){
-                    
-            DATA = storage;
-            const data = DATA;
-            this.setState({data: data});
-        }else{
-
-            // Queries Values
-            DATA = this.props.location.details
-            currPlaceData(DATA);
-            //Fetches the data through the server
-
-            const data = DATA;
-            this.setState({data: data});
-        
-        }
+        console.log(this.props.location.details);
+        console.log(this.props.location.details.id);
+        const data = server.fetchReviews(this.props.location.details.id).then(x => this.setState({data: x})).catch(e => console.log(e));
     }
     render() {
 
@@ -113,6 +99,7 @@ class Place extends React.Component {
             );
 
         }else{
+           
             return(
                 <div>
                     Data is loading...
